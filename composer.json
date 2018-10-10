@@ -1,7 +1,7 @@
 {
     "name": "elminson/multiproccessingcurlrequests",
     "description": "MultiProccessingCurlRequests",
-    "type": "project",
+    "type": "library",
     "require": {
         "ext-curl": "*",
         "ext-json": "*"
