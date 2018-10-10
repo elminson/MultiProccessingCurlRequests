@@ -3,8 +3,7 @@
     "description": "MultiProccessingCurlRequests",
     "type": "project",
     "require": {
-        "phpunit/phpunit": "^7.4@dev",
-      "ext-curl": "*",
+        "ext-curl": "*",
         "ext-json": "*"
     },
     "require-dev": {
