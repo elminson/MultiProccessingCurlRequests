@@ -1,8 +1,8 @@
-#MultiProccessingCurlRequests
+# MultiProccessingCurlRequests
 ```
 composer require elminson/multiproccessingcurlrequests
 ```
-Proccessing Multiple cURL requests in PHP faster
+### Proccessing Multiple cURL requests in PHP faster
 
 
 ```php
