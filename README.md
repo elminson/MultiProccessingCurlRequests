@@ -1,5 +1,7 @@
 #MultiProccessingCurlRequests
-
+```
+composer require elminson/multiproccessingcurlrequests
+```
 Proccessing Multiple cURL requests in PHP faster
 
 
