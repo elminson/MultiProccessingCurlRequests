@@ -62,6 +62,15 @@ class MultiProccessingCurlRequests
                 }
             }
 
+			// json?
+			 else if (!empty($d['payload'])) {
+				//attach encoded JSON string to the POST fields
+				curl_setopt($curly[$id], CURLOPT_POSTFIELDS, $d['payload']);
+				//set the content type to application/json
+				curl_setopt($curly[$id], CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+
+			}
+
             // extra options?
             if (!empty($options)) {
                 curl_setopt_array($curly[$id], $options);
