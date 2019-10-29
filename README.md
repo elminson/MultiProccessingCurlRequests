@@ -42,6 +42,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 ```
 
+### Send Request in json and post format
 
 ```php
 <?php
