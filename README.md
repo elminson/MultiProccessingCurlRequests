@@ -60,6 +60,4 @@ require __DIR__ . '/vendor/autoload.php';
 		$call = new MultiProccessingCurlRequests();
 		$call->setIsJson(true);
 		$r = $call->multiRequest($data);
-		print_r($r);
-		$this->assertEquals("1", $r[0]['userId']);
-		$this->assertEquals("1", $r[1][0]['id']);
+		var_dump($r);
