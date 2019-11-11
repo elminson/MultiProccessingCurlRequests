@@ -67,8 +67,14 @@ class MultiProccessingCurlRequests
 
 				if (!empty($d['post'])) {
 
-					curl_setopt($curly[$id], CURLOPT_POST, true);
-					curl_setopt($curly[$id], CURLOPT_POSTFIELDS, $d['post']);
+					if(is_array($d['post'])) {
+
+						curl_setopt($curly[$id], CURLOPT_POST, true);
+						curl_setopt($curly[$id], CURLOPT_POSTFIELDS, $d['post']);
+
+					} else {
+						curl_setopt($curly[$id], CURLOPT_POST, false);
+					}
 
 				}
 
