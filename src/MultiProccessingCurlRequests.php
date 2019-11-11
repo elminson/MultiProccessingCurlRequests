@@ -18,6 +18,8 @@ class MultiProccessingCurlRequests
 
     private $isDebug = false;
 
+    private $isPost = true;
+
     /**
      * PHPProjectGen constructor.
      */
@@ -49,15 +51,19 @@ class MultiProccessingCurlRequests
             $url = (is_array($d) && !empty($d['url'])) ? $d['url'] : $d;
             curl_setopt($curly[$id], CURLOPT_URL, $url);
             curl_setopt($curly[$id], CURLOPT_HEADER, 0);
-            curl_setopt($curly[$id], CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($curly[$id], CURLOPT_RETURNTRANSFER, true);
             if ($this->isDebug) {
                 curl_setopt($curly[$id], CURLOPT_VERBOSE, true);
+            }
+
+            if ($this->isPost) {
+                curl_setopt($curly[$id], CURLOPT_POST, true);
             }
 
             // post?
             if (is_array($d)) {
                 if (!empty($d['post'])) {
-                    curl_setopt($curly[$id], CURLOPT_POST, 1);
+                    curl_setopt($curly[$id], CURLOPT_POST, true);
                     curl_setopt($curly[$id], CURLOPT_POSTFIELDS, $d['post']);
                 }
             }
@@ -137,5 +143,20 @@ class MultiProccessingCurlRequests
         $this->isDebug = $isDebug;
     }
 
+	/**
+	 * @return bool
+	 */
+	public function isPost()
+	{
+		return $this->isPost;
+	}
+
+	/**
+	 * @param bool $isDebug
+	 */
+	public function setIsPost($isPost)
+	{
+		$this->isPost = $isPost;
+	}
 
 }
