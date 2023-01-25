@@ -21,11 +21,25 @@ class MultiProccessingCurlRequests
 
 	private $isPost = true;
 
+	private $headers = null;
+
+	private $isPut = false;
+
 	/**
 	 * PHPProjectGen constructor.
 	 */
 	public function __construct()
 	{
+	}
+
+	/**
+	 * @param $headers
+	 *
+	 * @return $this
+	 */public function setHeaders($headers)
+	{
+		$this->headers = $headers;
+		return $this;
 	}
 
 	/**
@@ -54,12 +68,21 @@ class MultiProccessingCurlRequests
 			curl_setopt($curly[$id], CURLOPT_URL, $url);
 			curl_setopt($curly[$id], CURLOPT_HEADER, 0);
 			curl_setopt($curly[$id], CURLOPT_RETURNTRANSFER, true);
+
 			if ($this->isDebug) {
 				curl_setopt($curly[$id], CURLOPT_VERBOSE, true);
 			}
 
 			if ($this->isPost) {
 				curl_setopt($curly[$id], CURLOPT_POST, true);
+			}
+
+			if ($this->isPut) {
+				curl_setopt($curly[$id], CURLOPT_CUSTOMREQUEST, "PUT");
+			}
+
+			if (!empty($this->headers)) {
+				curl_setopt($curly[$id], CURLOPT_HTTPHEADER, $this->headers);
 			}
 
 			// post?
@@ -171,6 +194,12 @@ class MultiProccessingCurlRequests
 	{
 
 		return $this->isPost;
+	}
+
+	public function setIsPut($isPut)
+	{
+
+		$this->isPut = $isPut;
 	}
 
 	/**
