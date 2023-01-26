@@ -106,8 +106,6 @@ class MultiProccessingCurlRequests
 
 					//attach encoded JSON string to the POST fields
 					curl_setopt($curly[$id], CURLOPT_POSTFIELDS, $d['payload']);
-					//set the content type to application/json
-					curl_setopt($curly[$id], CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
 
 				}
 
